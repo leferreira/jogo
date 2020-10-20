@@ -1,6 +1,6 @@
 package br.com.vector.leandro.jogo.tree;
 
-public enum Mensagem {
+public enum MensagemEnum {
 	
 	PENSE_EM_UM_ANIMAL("Pense em um animal. "),
 	O_ANIMAL_QUE_VOCE_PENSEOU_EH ("O animal que você pensou é "),
@@ -11,7 +11,7 @@ public enum Mensagem {
 	
 	private String msg;
 	
-	Mensagem(String msg)
+	MensagemEnum(String msg)
 	{
 		this.msg = msg;
 	}

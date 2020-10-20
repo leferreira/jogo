@@ -15,5 +15,7 @@ public interface JogoService {
 	public List<No> list(No node);
 	
 	public No iniciar();
+	
+	public void jogar();
 
 }

@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import br.com.vector.leandro.jogo.service.serviceImpl.JogoServiceImpl;
 import jogo.negocio.Logica;
 
 @SpringBootApplication
@@ -19,8 +20,8 @@ public class JogoApplication {
 		return args -> {
 			System.out.println("==============================================================");
 			System.out.println("Funcionou");
-			Logica logica = new Logica();
-			logica.inicia();
+			JogoServiceImpl service = new JogoServiceImpl();
+			service.jogar();
 			System.out.println("==============================================================");
 		};
 	}
