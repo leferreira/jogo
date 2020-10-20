@@ -6,7 +6,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Component;
 
 import br.com.vector.leandro.jogo.service.JogoService;
-import br.com.vector.leandro.jogo.tree.Mensagem;
+import br.com.vector.leandro.jogo.tree.MensagemEnum;
 import br.com.vector.leandro.jogo.tree.No;
 
 @Component(value="JogoServiceImpl")
@@ -41,24 +41,24 @@ public class JogoServiceImpl implements JogoService{
 	
 	private No logica(No node) {
 		if (this.isFolha(node)) {
-			System.out.println(Mensagem.O_ANIMAL_QUE_VOCE_PENSEOU_EH.getMsg() + node.getCaracteristica());
+			System.out.println(MensagemEnum.O_ANIMAL_QUE_VOCE_PENSEOU_EH.getMsg() + node.getCaracteristica());
 			this.setResposta(ler.nextLine());
 			if (SIM.equals(this.getResposta())) {
 				System.out.println("Eu venci");
 				return node;
 			}
 			else {
-				System.out.println(Mensagem.QUAL_ANIMAL_VOCE_PENSOU.getMsg());
+				System.out.println(MensagemEnum.QUAL_ANIMAL_VOCE_PENSOU.getMsg());
 				this.setResposta(ler.nextLine());
 				No novoAnimal = this.createNo(this.getResposta());
-				System.out.println( Mensagem.PERGUNTA_NOVA_CARACTERISTICA.getMsg().replace("XXXX", novoAnimal.getCaracteristica()).replace("yyyy", node.getCaracteristica()) );
+				System.out.println( MensagemEnum.PERGUNTA_NOVA_CARACTERISTICA.getMsg().replace("XXXX", novoAnimal.getCaracteristica()).replace("yyyy", node.getCaracteristica()) );
 				this.setResposta(ler.nextLine());
 				No novoCaracteristica = this.createNo(this.getResposta());
 				this.inserir(node, novoCaracteristica, novoAnimal);
 				return this.logica(this.nodePai(node));
 			}
 		}else {
-			System.out.println(Mensagem.PERGUNTA_CARACTERISTICA.getMsg() + node.getCaracteristica());
+			System.out.println(MensagemEnum.PERGUNTA_CARACTERISTICA.getMsg() + node.getCaracteristica());
 			this.setResposta(ler.nextLine());
 			if (SIM.equals(this.getResposta())) {
 				return this.logica(node.getDireita());
@@ -106,7 +106,7 @@ public class JogoServiceImpl implements JogoService{
 	}
 	
 	public String primeiraPergunta() {
-		return Mensagem.PENSE_EM_UM_ANIMAL.getMsg();
+		return MensagemEnum.PENSE_EM_UM_ANIMAL.getMsg();
 	}
 	
 	
